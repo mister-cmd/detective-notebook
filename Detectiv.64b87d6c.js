@@ -679,14 +679,13 @@ var _jsxDevRuntime = require("react/jsx-dev-runtime");
 var _react = require("react");
 var _reactDefault = parcelHelpers.interopDefault(_react);
 var _client = require("react-dom/client");
-var _clientDefault = parcelHelpers.interopDefault(_client);
 var _app = require("./App");
 var _appDefault = parcelHelpers.interopDefault(_app);
 var _indexCss = require("./index.css");
-(0, _clientDefault.default).createRoot(document.getElementById("root")).render(/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _appDefault.default), {}, void 0, false, {
+(0, _client.createRoot)(document.getElementById("root")).render(/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _appDefault.default), {}, void 0, false, {
     fileName: "src/main.jsx",
     lineNumber: 6,
-    columnNumber: 61
+    columnNumber: 52
 }, undefined));
 
   $parcel$ReactRefreshHelpers$97be.postlude(module);
@@ -24951,301 +24950,245 @@ parcelHelpers.export(exports, "default", ()=>App);
 var _jsxDevRuntime = require("react/jsx-dev-runtime");
 var _react = require("react");
 var _reactDefault = parcelHelpers.interopDefault(_react);
-var _s = $RefreshSig$(), _s1 = $RefreshSig$();
-// Цикл состояния чекбокса
-const boxStates = [
-    "",
-    "\u2713",
-    "\xd7",
-    "/"
-];
-function EditableText({ text, onChange }) {
-    _s();
-    const [editing, setEditing] = (0, _react.useState)(false);
-    const [value, setValue] = (0, _react.useState)(text);
-    function finishEditing() {
-        setEditing(false);
-        onChange(value.trim() === "" ? text : value);
-    }
-    return editing ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
-        className: "border p-1 rounded w-full",
-        value: value,
-        autoFocus: true,
-        onChange: (e)=>setValue(e.target.value),
-        onBlur: finishEditing,
-        onKeyDown: (e)=>{
-            if (e.key === "Enter") finishEditing();
-            if (e.key === "Escape") {
-                setValue(text);
-                setEditing(false);
-            }
-        }
-    }, void 0, false, {
-        fileName: "src/App.jsx",
-        lineNumber: 16,
-        columnNumber: 5
-    }, this) : /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
-        className: "cursor-pointer hover:bg-yellow-100 p-1 rounded select-none",
-        onClick: ()=>setEditing(true),
-        children: text
-    }, void 0, false, {
-        fileName: "src/App.jsx",
-        lineNumber: 31,
-        columnNumber: 5
-    }, this);
-}
-_s(EditableText, "St75lFNrxVSLJpeaBalzaC66UUQ=");
-_c = EditableText;
-function Item({ item, onUpdate, onToggleState }) {
-    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-        className: "flex items-center gap-2 pl-4",
-        children: [
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
-                onClick: onToggleState,
-                className: `w-6 h-6 text-center rounded border ${item.state === "\u2713" ? "bg-green-400 text-white" : item.state === "\xd7" ? "bg-red-500 text-white" : item.state === "/" ? "bg-yellow-300 text-black" : "bg-white"}`,
-                title: "\u041A\u043B\u0438\u043A \u0434\u043B\u044F \u0441\u043C\u0435\u043D\u044B \u0441\u043E\u0441\u0442\u043E\u044F\u043D\u0438\u044F",
-                children: item.state
-            }, void 0, false, {
-                fileName: "src/App.jsx",
-                lineNumber: 43,
-                columnNumber: 7
-            }, this),
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(EditableText, {
-                text: item.text,
-                onChange: onUpdate
-            }, void 0, false, {
-                fileName: "src/App.jsx",
-                lineNumber: 58,
-                columnNumber: 7
-            }, this)
-        ]
-    }, void 0, true, {
-        fileName: "src/App.jsx",
-        lineNumber: 42,
-        columnNumber: 5
-    }, this);
-}
-_c1 = Item;
-function Section({ section, onUpdateSection, onAddItem, onUpdateItem, onToggleItemState }) {
-    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-        className: "border rounded p-3 my-2 bg-gray-50",
-        children: [
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(EditableText, {
-                text: section.title,
-                onChange: onUpdateSection
-            }, void 0, false, {
-                fileName: "src/App.jsx",
-                lineNumber: 66,
-                columnNumber: 7
-            }, this),
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                className: "mt-2 space-y-1",
-                children: section.items.map((item, i)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(Item, {
-                        item: item,
-                        onUpdate: (text)=>onUpdateItem(i, text),
-                        onToggleState: ()=>onToggleItemState(i)
-                    }, i, false, {
-                        fileName: "src/App.jsx",
-                        lineNumber: 69,
-                        columnNumber: 11
-                    }, this))
-            }, void 0, false, {
-                fileName: "src/App.jsx",
-                lineNumber: 67,
-                columnNumber: 7
-            }, this),
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
-                onClick: onAddItem,
-                className: "mt-2 px-3 py-1 rounded bg-blue-600 text-white hover:bg-blue-700",
-                children: "\u0414\u043E\u0431\u0430\u0432\u0438\u0442\u044C \u043F\u0443\u043D\u043A\u0442"
-            }, void 0, false, {
-                fileName: "src/App.jsx",
-                lineNumber: 77,
-                columnNumber: 7
-            }, this)
-        ]
-    }, void 0, true, {
-        fileName: "src/App.jsx",
-        lineNumber: 65,
-        columnNumber: 5
-    }, this);
-}
-_c2 = Section;
+var _s = $RefreshSig$();
+const STATUS = {
+    NONE: "",
+    YES: "\u2714",
+    NO: "\xd7",
+    MAYBE: "/"
+};
+const getNextStatus = (current)=>{
+    if (current === STATUS.NONE) return STATUS.YES;
+    if (current === STATUS.YES) return STATUS.NO;
+    if (current === STATUS.NO) return STATUS.MAYBE;
+    return STATUS.NONE;
+};
+const loadData = ()=>{
+    const data = localStorage.getItem("detectiveNotebook");
+    return data ? JSON.parse(data) : [];
+};
+const saveData = (data)=>{
+    localStorage.setItem("detectiveNotebook", JSON.stringify(data));
+};
 function App() {
-    _s1();
-    const [cases, setCases] = (0, _react.useState)([
-        {
-            title: "\u0414\u0435\u043B\u043E \u21161",
-            sections: [
-                {
-                    title: "\u041F\u043E\u0434\u043E\u0437\u0440\u0435\u0432\u0430\u0435\u043C\u044B\u0435",
-                    items: [
-                        {
-                            text: "\u0412\u0430\u043D\u044F",
-                            state: ""
-                        },
-                        {
-                            text: "\u0418\u043B\u044C\u044F",
-                            state: "\xd7"
-                        }
-                    ]
-                }
-            ]
-        }
+    _s();
+    const [cases, setCases] = (0, _react.useState)(loadData);
+    (0, _react.useEffect)(()=>{
+        saveData(cases);
+    }, [
+        cases
     ]);
-    // Добавить новое дело
-    function addCase() {
+    const addCase = ()=>{
         setCases([
             ...cases,
             {
-                title: "\u041D\u043E\u0432\u043E\u0435 \u0434\u0435\u043B\u043E",
+                id: Date.now(),
+                name: "\u041D\u043E\u0432\u043E\u0435 \u0434\u0435\u043B\u043E",
                 sections: []
             }
         ]);
-    }
-    // Обновить название дела
-    function updateCaseTitle(idx, text) {
-        const newCases = [
-            ...cases
-        ];
-        newCases[idx].title = text;
-        setCases(newCases);
-    }
-    // Добавить раздел в дело
-    function addSection(caseIdx) {
-        const newCases = [
-            ...cases
-        ];
-        newCases[caseIdx].sections.push({
-            title: "\u041D\u043E\u0432\u044B\u0439 \u0440\u0430\u0437\u0434\u0435\u043B",
-            items: []
-        });
-        setCases(newCases);
-    }
-    // Обновить название раздела
-    function updateSection(caseIdx, sectionIdx, text) {
-        const newCases = [
-            ...cases
-        ];
-        newCases[caseIdx].sections[sectionIdx].title = text;
-        setCases(newCases);
-    }
-    // Добавить пункт в раздел
-    function addItem(caseIdx, sectionIdx) {
-        const newCases = [
-            ...cases
-        ];
-        newCases[caseIdx].sections[sectionIdx].items.push({
-            text: "\u041D\u043E\u0432\u044B\u0439 \u043F\u0443\u043D\u043A\u0442",
-            state: ""
-        });
-        setCases(newCases);
-    }
-    // Обновить текст пункта
-    function updateItem(caseIdx, sectionIdx, itemIdx, text) {
-        const newCases = [
-            ...cases
-        ];
-        newCases[caseIdx].sections[sectionIdx].items[itemIdx].text = text;
-        setCases(newCases);
-    }
-    // Переключить состояние чекбокса пункта
-    function toggleItemState(caseIdx, sectionIdx, itemIdx) {
-        const newCases = [
-            ...cases
-        ];
-        const current = newCases[caseIdx].sections[sectionIdx].items[itemIdx].state;
-        const nextIndex = (boxStates.indexOf(current) + 1) % boxStates.length;
-        newCases[caseIdx].sections[sectionIdx].items[itemIdx].state = boxStates[nextIndex];
-        setCases(newCases);
-    }
+    };
+    const updateCaseName = (id, newName)=>{
+        setCases(cases.map((c)=>c.id === id ? {
+                ...c,
+                name: newName
+            } : c));
+    };
+    const addSection = (caseId)=>{
+        setCases(cases.map((c)=>c.id === caseId ? {
+                ...c,
+                sections: [
+                    ...c.sections,
+                    {
+                        id: Date.now(),
+                        name: "\u041D\u043E\u0432\u044B\u0439 \u0440\u0430\u0437\u0434\u0435\u043B",
+                        items: []
+                    }
+                ]
+            } : c));
+    };
+    const addItem = (caseId, sectionId)=>{
+        setCases(cases.map((c)=>c.id === caseId ? {
+                ...c,
+                sections: c.sections.map((s)=>s.id === sectionId ? {
+                        ...s,
+                        items: [
+                            ...s.items,
+                            {
+                                id: Date.now(),
+                                name: "\u041D\u043E\u0432\u044B\u0439 \u043F\u0443\u043D\u043A\u0442",
+                                status: ""
+                            }
+                        ]
+                    } : s)
+            } : c));
+    };
+    const updateName = (caseId, sectionId, itemId, newName)=>{
+        setCases(cases.map((c)=>c.id === caseId ? {
+                ...c,
+                sections: c.sections.map((s)=>s.id === sectionId ? {
+                        ...s,
+                        items: s.items.map((i)=>i.id === itemId ? {
+                                ...i,
+                                name: newName
+                            } : i)
+                    } : s)
+            } : c));
+    };
+    const updateStatus = (caseId, sectionId, itemId)=>{
+        setCases(cases.map((c)=>c.id === caseId ? {
+                ...c,
+                sections: c.sections.map((s)=>s.id === sectionId ? {
+                        ...s,
+                        items: s.items.map((i)=>i.id === itemId ? {
+                                ...i,
+                                status: getNextStatus(i.status)
+                            } : i)
+                    } : s)
+            } : c));
+    };
+    const updateSectionName = (caseId, sectionId, newName)=>{
+        setCases(cases.map((c)=>c.id === caseId ? {
+                ...c,
+                sections: c.sections.map((s)=>s.id === sectionId ? {
+                        ...s,
+                        name: newName
+                    } : s)
+            } : c));
+    };
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-        className: "max-w-4xl mx-auto p-4",
+        className: "max-w-5xl mx-auto p-6",
         children: [
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h1", {
-                className: "text-3xl font-extrabold mb-4",
-                children: "\u0414\u0435\u043B\u0430 \u0434\u0435\u0442\u0435\u043A\u0442\u0438\u0432\u0430"
+                className: "text-3xl font-bold mb-6",
+                children: "\uD83D\uDD75\uFE0F\u200D\u2642\uFE0F \u0411\u043B\u043E\u043A\u043D\u043E\u0442 \u0434\u0435\u043B"
             }, void 0, false, {
                 fileName: "src/App.jsx",
-                lineNumber: 157,
+                lineNumber: 150,
+                columnNumber: 7
+            }, this),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
+                className: "mb-4 bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700",
+                onClick: addCase,
+                children: "\u2795 \u0414\u043E\u0431\u0430\u0432\u0438\u0442\u044C \u0434\u0435\u043B\u043E"
+            }, void 0, false, {
+                fileName: "src/App.jsx",
+                lineNumber: 151,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                 className: "space-y-6",
-                children: cases.map((c, ci)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                        className: "border p-4 rounded shadow-md bg-white",
+                children: cases.map((c)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                        className: "bg-white shadow p-4 rounded-lg",
                         children: [
-                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(EditableText, {
-                                text: c.title,
-                                onChange: (text)=>updateCaseTitle(ci, text)
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
+                                className: "text-xl font-semibold w-full border-b border-gray-300 focus:outline-none focus:border-blue-500 mb-4",
+                                value: c.name,
+                                onChange: (e)=>updateCaseName(c.id, e.target.value)
                             }, void 0, false, {
                                 fileName: "src/App.jsx",
-                                lineNumber: 161,
+                                lineNumber: 160,
+                                columnNumber: 13
+                            }, this),
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
+                                onClick: ()=>addSection(c.id),
+                                className: "text-sm text-blue-500 hover:underline mb-4",
+                                children: "\u2795 \u0414\u043E\u0431\u0430\u0432\u0438\u0442\u044C \u0440\u0430\u0437\u0434\u0435\u043B"
+                            }, void 0, false, {
+                                fileName: "src/App.jsx",
+                                lineNumber: 165,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                                className: "mt-3 space-y-3",
-                                children: [
-                                    c.sections.map((section, si)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(Section, {
-                                            section: section,
-                                            onUpdateSection: (text)=>updateSection(ci, si, text),
-                                            onAddItem: ()=>addItem(ci, si),
-                                            onUpdateItem: (itemIdx, text)=>updateItem(ci, si, itemIdx, text),
-                                            onToggleItemState: (itemIdx)=>toggleItemState(ci, si, itemIdx)
-                                        }, si, false, {
-                                            fileName: "src/App.jsx",
-                                            lineNumber: 164,
-                                            columnNumber: 17
-                                        }, this)),
-                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
-                                        onClick: ()=>addSection(ci),
-                                        className: "mt-2 px-3 py-1 rounded bg-green-600 text-white hover:bg-green-700",
-                                        children: "\u0414\u043E\u0431\u0430\u0432\u0438\u0442\u044C \u0440\u0430\u0437\u0434\u0435\u043B"
-                                    }, void 0, false, {
+                                className: "space-y-4",
+                                children: c.sections.map((s)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                                        className: "bg-gray-100 p-3 rounded",
+                                        children: [
+                                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
+                                                className: "text-lg font-medium w-full border-b border-gray-300 focus:outline-none focus:border-blue-500 mb-2",
+                                                value: s.name,
+                                                onChange: (e)=>updateSectionName(c.id, s.id, e.target.value)
+                                            }, void 0, false, {
+                                                fileName: "src/App.jsx",
+                                                lineNumber: 174,
+                                                columnNumber: 19
+                                            }, this),
+                                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
+                                                onClick: ()=>addItem(c.id, s.id),
+                                                className: "text-sm text-green-500 hover:underline mb-2",
+                                                children: "\u2795 \u0414\u043E\u0431\u0430\u0432\u0438\u0442\u044C \u043F\u0443\u043D\u043A\u0442"
+                                            }, void 0, false, {
+                                                fileName: "src/App.jsx",
+                                                lineNumber: 181,
+                                                columnNumber: 19
+                                            }, this),
+                                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("ul", {
+                                                className: "space-y-1",
+                                                children: s.items.map((i)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
+                                                        className: "flex items-center justify-between bg-white px-3 py-1 rounded border",
+                                                        children: [
+                                                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
+                                                                className: "flex-1 mr-2 focus:outline-none",
+                                                                value: i.name,
+                                                                onChange: (e)=>updateName(c.id, s.id, i.id, e.target.value)
+                                                            }, void 0, false, {
+                                                                fileName: "src/App.jsx",
+                                                                lineNumber: 193,
+                                                                columnNumber: 25
+                                                            }, this),
+                                                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
+                                                                onClick: ()=>updateStatus(c.id, s.id, i.id),
+                                                                className: `w-8 h-8 flex items-center justify-center rounded text-white font-bold ${i.status === "\u2714" ? "bg-green-500" : i.status === "\xd7" ? "bg-red-500" : i.status === "/" ? "bg-yellow-400 text-black" : "bg-gray-300 text-black"}`,
+                                                                children: i.status || ""
+                                                            }, void 0, false, {
+                                                                fileName: "src/App.jsx",
+                                                                lineNumber: 200,
+                                                                columnNumber: 25
+                                                            }, this)
+                                                        ]
+                                                    }, i.id, true, {
+                                                        fileName: "src/App.jsx",
+                                                        lineNumber: 189,
+                                                        columnNumber: 23
+                                                    }, this))
+                                            }, void 0, false, {
+                                                fileName: "src/App.jsx",
+                                                lineNumber: 187,
+                                                columnNumber: 19
+                                            }, this)
+                                        ]
+                                    }, s.id, true, {
                                         fileName: "src/App.jsx",
                                         lineNumber: 173,
-                                        columnNumber: 15
-                                    }, this)
-                                ]
-                            }, void 0, true, {
+                                        columnNumber: 17
+                                    }, this))
+                            }, void 0, false, {
                                 fileName: "src/App.jsx",
-                                lineNumber: 162,
+                                lineNumber: 171,
                                 columnNumber: 13
                             }, this)
                         ]
-                    }, ci, true, {
+                    }, c.id, true, {
                         fileName: "src/App.jsx",
-                        lineNumber: 160,
+                        lineNumber: 159,
                         columnNumber: 11
                     }, this))
             }, void 0, false, {
                 fileName: "src/App.jsx",
-                lineNumber: 158,
-                columnNumber: 7
-            }, this),
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
-                onClick: addCase,
-                className: "mt-6 px-4 py-2 bg-blue-700 text-white rounded hover:bg-blue-800",
-                children: "\u0414\u043E\u0431\u0430\u0432\u0438\u0442\u044C \u0434\u0435\u043B\u043E"
-            }, void 0, false, {
-                fileName: "src/App.jsx",
-                lineNumber: 183,
+                lineNumber: 157,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "src/App.jsx",
-        lineNumber: 156,
+        lineNumber: 149,
         columnNumber: 5
     }, this);
 }
-_s1(App, "fNwqCvHgkpe/47iUhLCY0MIC48I=");
-_c3 = App;
-var _c, _c1, _c2, _c3;
-$RefreshReg$(_c, "EditableText");
-$RefreshReg$(_c1, "Item");
-$RefreshReg$(_c2, "Section");
-$RefreshReg$(_c3, "App");
+_s(App, "YFwbsvSfzuNo1C56yCC8zMhbOIE=");
+_c = App;
+var _c;
+$RefreshReg$(_c, "App");
 
   $parcel$ReactRefreshHelpers$be2d.postlude(module);
 } finally {
